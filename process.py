@@ -20,4 +20,12 @@ def get_classsample(data):
     majority = data[data[:, -1] == 0]
     minority = data[data[:, -1] == 1]
     return majority[:,0:-1],minority[:, 0:-1]
-
+#Standardization
+def standard(self,dataset):
+    stdval=dataset.std(0)
+    meanval=dataset.mean(0)
+    normdataset=np.zeros(np.shape(dataset))
+    m=dataset.shape[0]
+    normdataset=dataset-np.tile(meanval,(m,1))
+    normdataset=normdataset/np.tile(stdval,(m,1))
+    return normdataset
